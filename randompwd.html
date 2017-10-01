@@ -1,0 +1,66 @@
+<html>
+    <head>
+    <title>Password-Generator
+        </title>
+        <script>
+            function generate(){
+               var x=document.getElementById("number");
+                //alert(x.value);
+                pass="";
+         
+                chars="abcdefghijklmnopqrstuvwxyzqtyczagetrtsasjsussnsskxvrwieiqidnsg";
+                numbers="56732419081478334560902553274674957846372908651453098642115319";
+                characters="!@#$%^&*!@#$%^&*(!@#$%^&*(!@#$%^&*(@#$%^&*!@#$%^&*()<>:)))!(?)";
+               console.log(chars.length); //62
+               console.log(numbers.length);//62
+               console.log(characters.length);//62
+//var late=new Array(chars,numbers,characters);
+    z=Math.floor((x.value)/3);
+                
+                for (var d=0;d<z;d++)
+                {
+                 y=Math.floor(62*(Math.random()));
+                    pass+=chars[y]+numbers[y]+characters[y];
+                }
+                    var sub=pass.length-x.value;
+                   // alert(sub);   
+                
+                if(x.value==pass.length)
+                {
+                            document.getElementById("main").innerHTML=pass;
+                            document.getElementById("m").innerHTML=pass.length;
+                            document.getElementById("sub").innerHTML=sub;
+    
+                }
+             //password length is small
+            else if(sub<0)
+            {
+                for(c=0;c<Math.abs(sub);c++)
+                {
+                 y=Math.floor(11*(Math.random()));
+                    pass+=chars[y];
+                }
+                        document.getElementById("main").innerHTML=pass;
+                        document.getElementById("m").innerHTML=pass.length;
+                        document.getElementById("sub").innerHTML=sub;
+
+                }
+                else
+                {
+                newpass=pass.slice(0,x.value);
+                document.getElementById("main").innerHTML=newpass;
+                document.getElementById("m").innerHTML=newpass.length;                                                  document.getElementById("sub").innerHTML=sub;
+                }
+            }
+        
+        
+        </script>
+        </head>
+    <body>
+    <label for="Length">Length</label>    <input type="number" id="number" placeholder="Enter the length of the password generated ">
+        <button type="button" id="generate" onClick="generate()">Generate</button>
+        <p id="main"></p>
+        <p id="m"></p>
+        <p id="sub"></p>
+        </body>
+</html>
